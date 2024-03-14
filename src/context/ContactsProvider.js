@@ -40,7 +40,7 @@ export const ContactsProvider = ({children}) => {
 
     const getContact = useCallback(async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/contact/${id}`)
+          const response = await axios.get(`https://kata-server-e0c6f72de554.herokuapp.com/contact/${id}`)
           setContacts(response?.data)
         } catch (error) {
           console.log(error.message)
@@ -53,7 +53,7 @@ export const ContactsProvider = ({children}) => {
 
     const addToContact = async (recipientId) => {
         try {      
-            const response = await axios.post('http://localhost:5000/contact', {
+            const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/contact', {
                 userId: id,
                 recipientId: recipientId
             });

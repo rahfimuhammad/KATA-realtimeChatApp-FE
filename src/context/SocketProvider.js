@@ -15,7 +15,8 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         const newSocket = io(
-            'http://localhost:5000'
+            'https://kata-server-e0c6f72de554.herokuapp.com/'
+            // 'http://localhost:5000'
             // 'https://new-reality-server-c7e0e1ab0eee.herokuapp.com/'
             , { query: {id} })
 

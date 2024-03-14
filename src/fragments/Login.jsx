@@ -10,7 +10,7 @@ const Login = ({ isRegister }) => {
   const login = async (data) => {
       
     try {
-      const response = await axios.post('http://localhost:5000/login',
+      const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/login',
       data
       )
       setId(response?.data?.id)
@@ -45,11 +45,11 @@ const Login = ({ isRegister }) => {
   return (
           <form onSubmit={formik.handleSubmit} action="submit" className='auth-form'>
             <div className='auth-input'>
-              <label for='id'>Phone Number: </label>
+              <label htmlFor='id'>Phone Number: </label>
               <input required type="number" name='id' onChange={handleChange}/>
             </div>
             <div className='auth-input'>
-              <label for='password'>Password:</label>
+              <label htmlFor='password'>Password:</label>
               <input required type="password" name='password' onChange={handleChange}/>
             </div>
             <button type='submit' className='btn-submit'>{isRegister? "SIGN UP" : "SIGN IN" }</button>

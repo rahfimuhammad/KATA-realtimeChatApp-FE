@@ -42,7 +42,13 @@ const CreateConversation = () => {
         </div>
       </div>
         <div className='sidebar-content-list'>
-          {searchResults.length > 0 ? (
+        {!contacts.length
+            ? (<div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                <span>
+                    No contact yet
+                </span>
+            </div>) :
+          searchResults.length > 0 ? (
             searchResults.map((contact) => (
               <ContactItem key={contact.id} contact={contact}/>
             ))
@@ -50,7 +56,8 @@ const CreateConversation = () => {
             contacts.map((contact) => (
               <ContactItem key={contact.id} contact={contact}/>
             ))
-          )}
+          )
+        }
         </div>
     </div>
   )

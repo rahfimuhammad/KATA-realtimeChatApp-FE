@@ -2,18 +2,47 @@ import React from 'react'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Auth = () => {
+const SignUp = ({ setIsRegister }) => {
+
+  const notifySuccess = (message) => toast.success(message, {
+    position: "top-center",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+    });
+const notifyError = (message) => toast.error(message, {
+    position: "top-center",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+    });
 
     const register = async (data) => {
 
       try {
-        const response = await axios.post('http://localhost:5000/users',
+        const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/users',
         data
         )
-        console.log(response)
+        notifySuccess(response?.data.message)
       } catch (error) {
-        console.log(error.message)
+        notifyError(error.message)
+      } finally {
+        setTimeout(() => {
+          setIsRegister(prevData => !prevData);
+      }, 2000);
       }
     }
 
@@ -47,23 +76,23 @@ const Auth = () => {
   return (
           <form action="submit" onSubmit={formik.handleSubmit} className='auth-form'>
                 <div className='auth-input'>
-                  <label for='id'> Phone Number:</label>
+                  <label htmlFor='id'> Phone Number:</label>
                   <input required type="number" name='id' onChange={handleChange}/>
                 </div>
                 <div className='auth-input'>
-                  <label for='name'>Username:</label>
+                  <label htmlFor='name'>Username:</label>
                   <input required type="text" name='name' onChange={handleChange} />
                 </div> 
                 <div className='auth-input'>
-                  <label for='email'>Email:</label>
+                  <label htmlFor='email'>Email:</label>
                   <input required type="text" name='email' onChange={handleChange} />
                 </div>
                 <div className='auth-input'>
-                  <label for='avatarURL'>Avatar Link:</label>
+                  <label htmlFor='avatarURL'>Avatar Link:</label>
                   <input required type="text" name='avatarURL' onChange={handleChange}/>
                 </div>
                 <div className='auth-input'>
-                  <label for='password'>Password:</label>
+                  <label htmlFor='password'>Password:</label>
                   <input required type="password" name='password' onChange={handleChange}/>
                 </div>
             <button type='submit' className='btn-submit'>SIGN UP</button>
@@ -71,4 +100,4 @@ const Auth = () => {
   )
 }
 
-export default Auth
+export default SignUp

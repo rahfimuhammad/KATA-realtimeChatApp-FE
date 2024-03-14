@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Logo from '../assets/logoAuth.png'
 import Login from '../fragments/Login'
 import SignUp from '../fragments/SignUp'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const Auth = () => {
 
@@ -14,7 +16,7 @@ const Auth = () => {
           <h3>{isRegister? "Sign Up" : "Sign In"}</h3>
           {
             isRegister
-            ? (<SignUp/>)
+            ? (<SignUp setIsRegister={setIsRegister}/>)
             : (<Login/>)
           }
           {isRegister
@@ -25,6 +27,7 @@ const Auth = () => {
               <p>Don't have an account? <b style={{cursor: "pointer"}} onClick={() => setIsRegister(!isRegister)}>Sign Up</b></p>
               </span>}
         </div>
+        <ToastContainer/>
     </div>
   )
 }
