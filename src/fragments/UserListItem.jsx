@@ -32,7 +32,7 @@ const UserListItem = ({ conversation }) => {
              src={profilePict || Dummy} 
              alt="profile-user" 
         />
-        <div style={{height: "fit-content", width: "calc(100% - 50px)", display: "flex", flexDirection: "column", gap: "3px", alignItems: "flex-start"}}>
+        <div style={{height: "fit-content", width: "calc(100% - 60px)", display: "flex", flexDirection: "column", gap: "3px", alignItems: "flex-start"}}>
           <div style={{width: "100%", display: "flex", alignItems: "center"}}>
             <div style={{width: "50%"}}>
               <p style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>
