@@ -20,7 +20,6 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
         if (deleteButton) {
             deleteMessage(selectedConversation.recipients[0]?.id, messageId);
         }
-        console.log(selectedConversation.recipients[0]?.id)
     };
 
   return (
