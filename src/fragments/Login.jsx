@@ -1,22 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useApp } from '../context/AppProvider'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import Spinner from './Spinner'
 
-const Login = ({ isRegister }) => {
+const Login = () => {
 
   const { setId, setProfile } = useApp()
+  const [loading, setLoading] = useState(false)
+  
   const login = async (data) => {
       
     try {
+      setLoading(true)
       const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/login',
       data
       )
       setId(response?.data?.id)
       setProfile(response?.data)
+      setLoading(false)
     } catch (error) {
       console.log(error)
+      setLoading(false)
     }
   }
 
@@ -52,7 +58,12 @@ const Login = ({ isRegister }) => {
               <label htmlFor='password'>Password:</label>
               <input required type="password" name='password' onChange={handleChange}/>
             </div>
-            <button type='submit' className='btn-submit'>{isRegister? "SIGN UP" : "SIGN IN" }</button>
+            <button type='submit' className='btn-submit'>
+              {loading
+              ? <Spinner size={22}/> 
+              : "SIGN IN" 
+              }
+            </button>
           </form>
   )
 }

@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from './Spinner'
 
 const SignUp = ({ setIsRegister }) => {
 
+  const [loading, setLoading] = useState(false)
   const notifySuccess = (message) => toast.success(message, {
     position: "top-center",
     autoClose: 1000,
@@ -33,13 +35,16 @@ const notifyError = (message) => toast.error(message, {
     const register = async (data) => {
 
       try {
+        setLoading(true)
         const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/users',
         data
         )
         notifySuccess(response?.data.message)
+        setLoading(false)
       } catch (error) {
         notifyError(error.message)
       } finally {
+        setLoading(false)
         setTimeout(() => {
           setIsRegister(prevData => !prevData);
       }, 2000);
@@ -95,7 +100,11 @@ const notifyError = (message) => toast.error(message, {
                   <label htmlFor='password'>Password:</label>
                   <input required type="password" name='password' onChange={handleChange}/>
                 </div>
-            <button type='submit' className='btn-submit'>SIGN UP</button>
+            <button type='submit' className='btn-submit'>
+              {loading
+              ? <Spinner size={22}/> 
+              : "SIGN UP"}
+            </button>
           </form>
   )
 }

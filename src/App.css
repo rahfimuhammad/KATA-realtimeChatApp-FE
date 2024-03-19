@@ -345,6 +345,9 @@ input[type=number] {
 .btn-submit {
   border: none;
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: calc(100% - 12px);
   outline: none;
   padding: 8px 5px;}
