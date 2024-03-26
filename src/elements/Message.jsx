@@ -22,10 +22,6 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
         }
     };
 
-    useEffect(() => {
-        console.log(getMessageDate(message?.createdAt, selectedConversation.message[index - 1]?.createdAt))
-    }, [])
-
   return (
         <div className={`bubble-chat-wrapper ${message.fromMe? 'owner' : ''}`}  
             key={index} 
