@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../fragments/Navbar'
+import Navbar from '../elements/Navbar'
 import ChatList from './ChatList'
 import CreateConversation from './CreateConversation'
 import { CaretRight, CaretLeft } from 'phosphor-react'

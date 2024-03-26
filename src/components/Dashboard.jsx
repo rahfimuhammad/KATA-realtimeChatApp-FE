@@ -5,8 +5,8 @@ import Main from '../components/Main';
 import WelcomeChat from '../components/WelcomeChat';
 import { useConversations } from '../context/ConversationsProvider';
 import { useApp } from '../context/AppProvider';
-import DialogueBox from '../fragments/DialogueBox';
-import AddContact from '../fragments/AddContact'
+import DialogueBox from '../elements/DialogueBox';
+import AddContact from '../elements/AddContact'
 
 const Dashboard = () => {
 

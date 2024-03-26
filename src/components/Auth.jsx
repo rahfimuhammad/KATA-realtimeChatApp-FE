@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Logo from '../assets/logoAuth.png'
-import Login from '../fragments/Login'
-import SignUp from '../fragments/SignUp'
+import Login from '../elements/Login'
+import SignUp from '../elements/SignUp'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 

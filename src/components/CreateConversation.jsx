@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useContacts } from '../context/ContactsProvider'
 import { useApp } from '../context/AppProvider'
 import { MagnifyingGlass, Plus } from 'phosphor-react'
-import CloseButton from '../fragments/CloseButton'
-import ContactItem from '../fragments/ContactItem'
+import CloseButton from '../elements/CloseButton'
+import ContactItem from '../elements/ContactItem'
 
 const CreateConversation = () => {
   const { contacts } = useContacts()

@@ -2,7 +2,7 @@ import React from 'react'
 import { Plus, MagnifyingGlass } from 'phosphor-react'
 import { useApp } from '../context/AppProvider'
 import { useConversations } from '../context/ConversationsProvider'
-import UserListItem from '../fragments/UserListItem'
+import UserListItem from '../elements/UserListItem'
 
 const ChatList = () => {
 
