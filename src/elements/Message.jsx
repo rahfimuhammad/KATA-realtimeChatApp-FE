@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import MessageStatus from './MessageStatus'
 import { TrashSimple } from 'phosphor-react'
 import { useConversations } from '../context/ConversationsProvider'
