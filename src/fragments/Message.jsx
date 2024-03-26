@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import MessageStatus from './MessageStatus'
 import { TrashSimple } from 'phosphor-react'
 import { useConversations } from '../context/ConversationsProvider'
@@ -22,6 +22,10 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
         }
     };
 
+    useEffect(() => {
+        console.log(getMessageDate(message?.createdAt, selectedConversation.message[index - 1]?.createdAt))
+    }, [])
+
   return (
         <div className={`bubble-chat-wrapper ${message.fromMe? 'owner' : ''}`}  
             key={index} 
@@ -40,8 +44,10 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
                 </div>}
                 <div className="bubble-chat" style={{flexDirection: message.fromMe? 'row-reverse' : 'row', 
                                                      position: "relative" }}>
-                    {(index === 0 || message?.sender !== selectedConversation?.messages[index - 1]?.sender) && 
-                        <img style={{width: "30px", 
+                    {(index === 0 
+                    || message?.sender !== selectedConversation?.messages[index - 1]?.sender 
+                    || getMessageDate(message?.createdAt, selectedConversation.message[index - 1]?.createdAt)) 
+                    && <img style={{width: "30px", 
                                     height: "30px", 
                                     borderRadius: "50%", 
                                     objectFit: "cover", 
