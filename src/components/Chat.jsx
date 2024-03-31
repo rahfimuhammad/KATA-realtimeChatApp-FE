@@ -17,7 +17,7 @@ const Chat = () => {
     const { sendMessage, selectedConversation } = useConversations()
     const { connectionError } = useSocket()
     const { contacts } = useContacts()
-    const { toggle, setToggle, dialogueBox, setDialogueBox, addContact, setAddContact } = useApp()
+    const { toggle, setToggle, deleteModal, setDeleteModal, contactInfo, setContactInfo } = useApp()
 
     const contactData = contacts.find((contact) => {
         return contact?.recipientId === selectedConversation.recipients[0]?.id
@@ -46,8 +46,8 @@ const Chat = () => {
             No Connection
            </p>
         </div>}
-        {addContact && <AddContact type="Contact"/>}
-        {dialogueBox && <DialogueBox setDialogueBox={setDialogueBox} type='endchat'/>}
+        {contactInfo && <AddContact type="Contact" onClose={() => setContactInfo(false)}/>}
+        {deleteModal && <DialogueBox type='Delete Conversation' onClose={() => setDeleteModal(false)}/>}
         <div className="chat-header">
             <div className="chat-header-left">
                 <img style={{width: "40px", 
@@ -77,13 +77,13 @@ const Chat = () => {
                          backgroundColor: "aliceblue", 
                          display: "flex", 
                          flexDirection: "column"}}>
-                <div className='chat-option' onClick={() => setAddContact(!addContact)}>
+                <div className='chat-option' onClick={() => setContactInfo(true)}>
                     <p>Contact</p>
                 </div>
                 <div className='chat-option' onClick={() => setDeleteButton(!deleteButton)}>
                     <p>Delete Message</p>
                 </div>
-                <div className='chat-option' onClick={() => setDialogueBox(!dialogueBox)}>
+                <div className='chat-option' onClick={() => setDeleteModal(true)}>
                     <p>Delete Conversation</p>
                 </div>
             </div>

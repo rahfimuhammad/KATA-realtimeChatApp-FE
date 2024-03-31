@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback } from "react";
+import React, { useContext, useEffect, useCallback, useState } from "react";
 import { useApp } from "./AppProvider";
 import axios from "axios";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -14,7 +14,8 @@ export const useContacts = () => {
 export const ContactsProvider = ({children}) => {
 
     const [contacts, setContacts] = useLocalStorage('contacts', [])
-    const { id, setAddContact } = useApp()
+    const [loading, setLoading] = useState(false)
+    const { id } = useApp()
     const notifySuccess = (message) => toast.success(message, {
         position: "top-center",
         autoClose: 1000,
@@ -53,6 +54,7 @@ export const ContactsProvider = ({children}) => {
 
     const addToContact = async (recipientId) => {
         try {      
+            setLoading(true)
             const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/contact', {
                 userId: id,
                 recipientId: recipientId
@@ -62,9 +64,7 @@ export const ContactsProvider = ({children}) => {
         } catch (error) {
             notifyError("Contact already exists");
         } finally {
-            setTimeout(() => {
-                setAddContact(prevData => !prevData);
-            }, 2000);
+            setLoading(false)
         }
     };
     
@@ -72,13 +72,14 @@ export const ContactsProvider = ({children}) => {
     const value = {
         contacts: contacts,
         setContacts: setContacts,
-        addToContact: addToContact
+        addToContact: addToContact,
+        loading: loading
     }
 
-return (
-    <ContactsContext.Provider value={value}>
-        {children}
-    </ContactsContext.Provider>
-)
+    return (
+        <ContactsContext.Provider value={value}>
+            {children}
+        </ContactsContext.Provider>
+    )
 }
 

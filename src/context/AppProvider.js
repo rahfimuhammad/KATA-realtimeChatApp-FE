@@ -13,8 +13,10 @@ export const AppProvider = ({ children }) => {
     const [toggle, setToggle] = useState(false)
     const [id, setId] = useLocalStorage('id')
     const [profile, setProfile] = useLocalStorage('profile', {})
-    const [dialogueBox, setDialogueBox] = useState(false)
+    const [logoutModal, setLogoutModal] = useState(false)
+    const [deleteModal, setDeleteModal] = useState(false)
     const [addContact, setAddContact] = useState(false)
+    const [contactInfo, setContactInfo] = useState(false)
 
 
     const value = {
@@ -26,10 +28,14 @@ export const AppProvider = ({ children }) => {
         setId: setId,
         profile: profile,
         setProfile: setProfile,
-        dialogueBox: dialogueBox,
-        setDialogueBox: setDialogueBox,
+        deleteModal: deleteModal,
+        setDeleteModal: setDeleteModal,
+        logoutModal: logoutModal,
+        setLogoutModal: setLogoutModal,
         addContact: addContact,
-        setAddContact: setAddContact
+        setAddContact: setAddContact,
+        contactInfo: contactInfo,
+        setContactInfo: setContactInfo
     }
 
     return (

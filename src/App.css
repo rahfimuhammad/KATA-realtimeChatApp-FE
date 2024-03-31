@@ -116,7 +116,7 @@ input[type=number] {
   border-radius: 5px 5px 0 0;
   border-bottom: 1px solid #cccccc;}
 
-/* Navbar Component */
+/* Navbar Element */
 
 .navbar-container {
   width: 30px;
@@ -241,11 +241,96 @@ input[type=number] {
     transform: scale(0);}
   to {
       transform: scale(1);}}
-  
-.delete-message-button {
-  animation: modalAppear 400ms;}
 
-/* Welcome Page Components */
+/* Message Element */
+
+.message-container {
+  width: fit-content;
+  max-width: calc(100% - 35px);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-left: 35px;
+  margin-right: 0;
+  gap: 5px;
+  border-radius: 0 10px 10px 10px;
+  padding: 8px;
+  color: #4e4e4e;
+  border: #ecebeb 1px solid;
+  background-color: #fcfcfc;}
+
+.me {
+  border-radius: 10px 0 10px 10px;
+  margin-left: 0;
+  margin-right: 35px;
+  background-color: #ecebeb;}
+
+.time-container {
+  width: max-content;
+  align-items: flex-end;
+  display: flex;}
+
+.bubble-chat-container {
+  width: calc(100% - 20px);
+  height: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  overflow-y: auto;}
+    
+
+.bubble-chat-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  color: #e4e4e7;}
+
+.owner {
+  align-items: flex-end;}
+
+.bubble-chat {
+  display: flex;
+  gap: 5px;
+  align-items: flex-start;
+  max-width: 60%;
+  position: relative;
+  width: fit-content;}
+
+.message-day-container {
+  width: 100%; 
+  display: flex; 
+  padding: 3px 0;
+  justify-content: center}
+
+.message-day {
+  background-color: #6f6f6f; 
+  padding: 8px; 
+  font-size: 13px; 
+  border-radius: 5px;}
+
+.message-profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  object-fit: cover;}
+      
+.delete-message-button {
+  animation: modalAppear 400ms;
+  background-color: #FF5050; 
+  padding: 3px; 
+  border: none; 
+  display: flex; 
+  cursor: pointer;
+  justify-content: center; 
+  align-items: center; 
+  border-radius: 5px;} 
+
+/* Welcome Page Component */
 
 .welcome-container {
   width: 100%;
@@ -279,53 +364,10 @@ input[type=number] {
   cursor: pointer;
   font-weight: bold;}
 
-/* Create Conversation Component */
+/* Contact Item Element */
 
 .contact-item {
   width: calc(100% - 10px);}
-
-/* Add Contact Modal Components */
-
-.add-contact {
-  position: relative;
-  z-index: 11;
-  width: 300px;
-  height: fit-content;
-  padding: 30px 15px;
-  background-color: aliceblue;
-  border-radius: 7px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: modalAppear 400ms;
-  gap: 15px;}
-
-.add-contact form {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;}
-
-.add-contact form input {
-  width: calc(100% - 10px);
-  padding: 7px 5px;
-  border: #cccccc 1px solid;
-  border-radius: 5px;}
-
-.button-container {
-  display: flex;
-  gap: 5px;
-  width: 90%;}
-
-.button-container button {
-  cursor: pointer;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  color: white;
-  width: 100%;
-  padding: 10px 0;}
 
 /* Authentication Component */
 
@@ -388,56 +430,48 @@ input[type=number] {
   color: white;
   border-radius: 5px;}
 
-/* Message Fragment */
+/* Add Contact Element */
 
-.bubble-chat-container {
-  width: calc(100% - 20px);
-  height: calc(100% - 30px);
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 10px;
-  overflow-y: auto;}
-
-.bubble-chat-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: flex-start;
-  color: #e4e4e7;}
-
-.owner {
-  align-items: flex-end;}
-
-.bubble-chat {
-  display: flex;
-  gap: 5px;
-  align-items: flex-start;
-  max-width: 60%;
-  width: fit-content;}
-
-.message-container {
-  width: fit-content;
-  max-width: calc(100% - 35px);
+.add-contact {
   position: relative;
+  z-index: 11;
+  width: 300px;
+  height: fit-content;
+  padding: 30px 15px;
+  background-color: aliceblue;
+  border-radius: 7px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  animation: modalAppear 400ms;
+  gap: 15px;}
+    
+.add-contact form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;}
+    
+.add-contact form input {
+  width: calc(100% - 10px);
+  padding: 7px 5px;
+  border: #cccccc 1px solid;
+  border-radius: 5px;}
+
+.button-container {
+  display: flex;
   gap: 5px;
-  border-radius: 0 10px 10px 10px;
-  padding: 8px;
-  color: #4e4e4e;
-  border: #ecebeb 1px solid;
-  background-color: #fcfcfc;}
-
-.time-container {
-  width: max-content;
-  align-items: flex-end;
-  display: flex;}
-
-.me {
-  border-radius: 10px 0 10px 10px;
-  background-color: #ecebeb;}
+  width: 90%;}
+    
+.button-container button {
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  width: 100%;
+  padding: 10px 0;}
 
     @media only screen and (max-width: 1200px) {
       
@@ -532,9 +566,7 @@ input[type=number] {
       .navbar-container {
         padding: 10px;
         width: calc(100% - 20px);
-        display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: space-between;
         height: 40px;}
 

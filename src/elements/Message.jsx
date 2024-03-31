@@ -27,33 +27,20 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
             key={index} 
             ref= {lastMessage? setRef: null}>
                 {(index === 0 || getMessageDate(message?.createdAt, selectedConversation.message[index - 1]?.createdAt)) &&
-                <div style={{width: "100%", 
-                             display: "flex", 
-                             padding: "3px 0",
-                             justifyContent: "center"}}>
-                    <span style={{backgroundColor: "#6f6f6f", 
-                                  padding: "8px", 
-                                  fontSize: "13px", 
-                                  borderRadius: "5px"}}>
+                <div className="message-day-container">
+                    <span className="message-day">
                         <p style={{fontSize: "13px"}}>{formattedTimeChatList(message.createdAt)}</p>
                     </span>
                 </div>}
-                <div className="bubble-chat" style={{flexDirection: message.fromMe? 'row-reverse' : 'row', 
-                                                     position: "relative" }}>
+                <div className="bubble-chat" style={{flexDirection: message.fromMe? 'row-reverse' : 'row'}}>
                     {(index === 0 
                     || message?.sender !== selectedConversation?.messages[index - 1]?.sender 
                     || getMessageDate(message?.createdAt, selectedConversation.message[index - 1]?.createdAt)) 
-                    && <img style={{width: "30px", 
-                                    height: "30px", 
-                                    borderRadius: "50%", 
-                                    objectFit: "cover", 
-                                    position: "absolute", 
-                                    top: "0"}}
-                                    src={!message.fromMe? (avatar || Dummy) : profile?.avatarURL} 
-                                    alt="profile" 
+                    && <img className='message-profile-image' 
+                            src={!message.fromMe? (avatar || Dummy) : profile?.avatarURL} 
+                            alt="profile" 
                     />}
-                    <div className={`message-container ${message.fromMe? 'me' : ''}`} style={{marginLeft: message.fromMe? '0' : '35px', 
-                                                                                              marginRight: message.fromMe? '35px' : '0' }}>
+                    <div className={`message-container ${message.fromMe? 'me' : ''}`}>
                         <p>{message.text}</p>
                         <div className='time-container'>
                             <span style={{fontSize: '12px'}}>{formattedTime(message.createdAt)}</span>
@@ -61,15 +48,7 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
                         {message.fromMe && <MessageStatus messageStatus={message?.status}/>}
                     </div>
                     {deleteButton &&
-                    <button style={{backgroundColor: "#FF5050", 
-                                    padding: "3px", 
-                                    border: "none", 
-                                    display: "flex", 
-                                    cursor: "pointer",
-                                    justifyContent: "center", 
-                                    alignItems: "center", 
-                                    borderRadius: "5px"}} 
-                            onClick={() => handleDelete(message?.messageId)}
+                    <button onClick={() => handleDelete(message?.messageId)}
                             className='delete-message-button'
                     >
                         <TrashSimple size={20} color="white" />

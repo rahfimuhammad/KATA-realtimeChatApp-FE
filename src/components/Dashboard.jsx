@@ -10,18 +10,19 @@ import AddContact from '../elements/AddContact'
 
 const Dashboard = () => {
 
-  const { dialogueBox, addContact, setAddContact } = useApp()
+  const { logoutModal, setLogoutModal, addContact, setAddContact } = useApp()
   const { selectedConversationId } = useConversations()
 
   return (
     <div className='app-container'>
-        {dialogueBox && <DialogueBox/>}
         <Sidebar/>
-        {selectedConversationId
+        {
+        selectedConversationId
         ? (<Main/>)
         : (<WelcomeChat/>)
         }
-        {addContact && <AddContact setAddContact={setAddContact} type="Add Contact" />}
+        {addContact && <AddContact onClose={() => setAddContact(false)} type="Add Contact" />}
+        {logoutModal && <DialogueBox onClose={() => setLogoutModal(false)} type='Logout'/>}
     </div>
   )
 }
