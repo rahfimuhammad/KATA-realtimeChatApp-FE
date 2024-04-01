@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import Logo from '../assets/logoAuth.png'
 import Login from '../elements/Login'
 import SignUp from '../elements/SignUp'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 
 const Auth = () => {
 

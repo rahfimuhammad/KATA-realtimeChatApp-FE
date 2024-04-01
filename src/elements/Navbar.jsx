@@ -10,10 +10,10 @@ const Navbar = () => {
   return (
     <div className='navbar-container'>
         <img 
-          src={Logo} 
-          alt="logo" 
-          style={{width: "30px", 
-                  height: "auto"}}
+            src={Logo} 
+            alt="logo" 
+            style={{width: "30px", 
+                    height: "auto"}}
         />
         <SignOut 
             onClick={() => setLogoutModal(prevData => !prevData)}

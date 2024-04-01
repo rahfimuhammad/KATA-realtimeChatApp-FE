@@ -25,7 +25,8 @@ const ContactItem = ({ contact }) => {
               cursor: "pointer",
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "space-between"}}>
+              justifyContent: "space-between"}}
+    >
         <div 
           className="user-wrapper" 
           style={{display: 'flex', 

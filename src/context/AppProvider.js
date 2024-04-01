@@ -9,10 +9,10 @@ export const useApp = () => {
 
 export const AppProvider = ({ children }) => {
 
-    const [isEditing, setIsEditing] = useState(false)
-    const [toggle, setToggle] = useState(false)
     const [id, setId] = useLocalStorage('id')
     const [profile, setProfile] = useLocalStorage('profile', {})
+    const [isEditing, setIsEditing] = useState(false)
+    const [toggle, setToggle] = useState(false)
     const [logoutModal, setLogoutModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const [addContact, setAddContact] = useState(false)

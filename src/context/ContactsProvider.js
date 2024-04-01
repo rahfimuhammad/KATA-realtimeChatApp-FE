@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useCallback, useState } from "react";
 import { useApp } from "./AppProvider";
-import axios from "axios";
-import useLocalStorage from "../hooks/useLocalStorage";
 import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const ContactsContext = React.createContext()
 

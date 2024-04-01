@@ -62,22 +62,23 @@ const CreateConversation = () => {
                     No contact yet
                 </span>
             </div>) :
-          searchResults.length > 0 ? (
-            searchResults.map((contact) => (
+          searchResults.length > 0 ? 
+          (searchResults.map((contact) => (
               <ContactItem 
                         key={contact.id} 
                         contact={contact}
               />
               ))
-            ) 
-          : (
+          ) 
+          : 
+          (
             contacts.map((contact) => (
               <ContactItem 
                         key={contact.id} 
                         contact={contact}
               />
               ))
-            )
+          )
         }
         </div>
     </div>

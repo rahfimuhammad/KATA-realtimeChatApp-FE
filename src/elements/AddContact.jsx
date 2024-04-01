@@ -65,7 +65,7 @@ const AddContact = ({ type, onClose }) => {
                             display: "flex", 
                             justifyContent: "center", 
                             alignItems: "center"}} 
-                            onClick={() => onClose()}
+                    onClick={() => onClose()}
                 >
                     Cancel
                 </button>

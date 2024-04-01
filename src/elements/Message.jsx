@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
-import MessageStatus from './MessageStatus'
 import { TrashSimple } from 'phosphor-react'
 import { useConversations } from '../context/ConversationsProvider'
 import { formattedTime, getMessageDate, formattedTimeChatList } from '../function/useFormattedTime'
 import { useApp } from '../context/AppProvider'
+import MessageStatus from './MessageStatus'
 import Dummy from '../assets/dummy.png'
 
 const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
@@ -26,13 +26,15 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
         <div 
             className={`bubble-chat-wrapper ${message.fromMe? 'owner' : ''}`}  
             key={index} 
-            ref= {lastMessage? setRef: null}>
-                {(index === 0 || getMessageDate(message?.createdAt, selectedConversation.message[index - 1]?.createdAt)) &&
-                <div className="message-day-container">
-                    <span className="message-day">
-                        <p style={{fontSize: "13px"}}>{formattedTimeChatList(message.createdAt)}</p>
-                    </span>
-                </div>}
+            ref= {lastMessage? setRef: null}
+        >
+                {(index === 0 || getMessageDate(message?.createdAt, selectedConversation.message[index - 1]?.createdAt)) 
+                && <div className="message-day-container">
+                        <span className="message-day">
+                            <p style={{fontSize: "13px"}}>{formattedTimeChatList(message.createdAt)}</p>
+                        </span>
+                </div>
+                }
                 <div 
                     className="bubble-chat" 
                     style={{flexDirection: message.fromMe? 'row-reverse' : 'row'}}
@@ -44,7 +46,8 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
                             className='message-profile-image' 
                             src={!message.fromMe? (avatar || Dummy) : profile?.avatarURL} 
                             alt="profile" 
-                    />}
+                    />
+                    }
                     <div className={`message-container ${message.fromMe? 'me' : ''}`}>
                         <p>
                             {message.text}
@@ -56,10 +59,10 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
                         </div>
                         {message.fromMe && <MessageStatus messageStatus={message?.status}/>}
                     </div>
-                    {deleteButton &&
-                    <button 
-                        onClick={() => handleDelete(message?.messageId)}
-                        className='delete-message-button'
+                    {deleteButton 
+                    && <button 
+                            onClick={() => handleDelete(message?.messageId)}
+                            className='delete-message-button'
                     >
                         <TrashSimple size={20} color="white" />
                     </button>

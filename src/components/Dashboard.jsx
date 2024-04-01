@@ -1,10 +1,10 @@
 import React from 'react'
-import '../App.css';
-import Sidebar from '../components/Sidebar';
-import Main from '../components/Main';
-import WelcomeChat from '../components/WelcomeChat';
 import { useConversations } from '../context/ConversationsProvider';
 import { useApp } from '../context/AppProvider';
+import '../App.css';
+import Sidebar from '../components/Sidebar';
+import Chat from '../components/Chat';
+import WelcomeChat from '../components/WelcomeChat';
 import DialogueBox from '../elements/DialogueBox';
 import AddContact from '../elements/AddContact'
 
@@ -18,7 +18,7 @@ const Dashboard = () => {
         <Sidebar/>
         {
         selectedConversationId
-        ? (<Main/>)
+        ? (<Chat/>)
         : (<WelcomeChat/>)
         }
         {addContact && <AddContact 

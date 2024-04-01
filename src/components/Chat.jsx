@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
+import { useSocket } from '../context/SocketProvider'
+import { useContacts } from '../context/ContactsProvider'
+import { useApp } from '../context/AppProvider'
 import { PaperPlaneRight, DotsThreeOutline, X } from 'phosphor-react'
 import { useConversations } from '../context/ConversationsProvider'
 import Message from '../elements/Message'
 import AddContact from '../elements/AddContact'
 import DialogueBox from '../elements/DialogueBox'
 import Dummy from '../assets/dummy.png'
-import { useSocket } from '../context/SocketProvider'
-import { useContacts } from '../context/ContactsProvider'
-import { useApp } from '../context/AppProvider'
 
 const Chat = () => {
 
@@ -40,108 +40,110 @@ const Chat = () => {
     }
 
   return (
-    <div 
-        className='chat-container' 
-        onClick={closeOption}>
-        {connectionError && <div className='no-connection'>
-            <p style={{color: "white"}}>
-                No Connection
-            </p>
-        </div>
-        }
-        {contactInfo && <AddContact 
-                                type="Contact" 
-                                onClose={() => setContactInfo(false)}
-                        />
-        }
-        {deleteModal && <DialogueBox 
-                                type='Delete Conversation' 
-                                onClose={() => setDeleteModal(false)}
-                        />
-        }
-        <div className="chat-header">
-            <div className="chat-header-left">
-                <img 
-                    style={{width: "40px", 
-                            height: "40px", 
-                            borderRadius: "50%", 
-                            objectFit: "cover"}}
-                    src={contactData?.recipient?.avatarURL || Dummy} 
-                    alt="profile" 
-                />
-                <p style={{fontWeight: "bold"}}>
-                    {contactData?.recipient?.name || selectedConversation?.recipients[0]?.id}
+    <div className='main-container'>
+        <div 
+            className='chat-container' 
+            onClick={closeOption}>
+            {connectionError && <div className='no-connection'>
+                <p style={{color: "white"}}>
+                    No Connection
                 </p>
             </div>
-            <div 
-                className="chat-header-right" 
-                onClick={() => {setOption(!option); setDeleteButton(false)}}
-            >
-                <DotsThreeOutline size={30} />
-            </div>
-            {option &&
-            <div 
-                style={{width: "200px", 
-                        height: "fit-content",
-                        position: "absolute",
-                        padding: "5px 0",
-                        borderRadius: "5px",
-                        border: "#cccccc 1px solid",
-                        right: "10px",
-                        zIndex: "3",
-                        top: "40px", 
-                        backgroundColor: "aliceblue", 
-                        display: "flex", 
-                        flexDirection: "column"}}
-            >
-                <div className='chat-option' onClick={() => setContactInfo(true)}>
-                    <p>Contact</p>
-                </div>
-                <div className='chat-option' onClick={() => setDeleteButton(!deleteButton)}>
-                    <p>Delete Message</p>
-                </div>
-                <div className='chat-option' onClick={() => setDeleteModal(true)}>
-                    <p>Delete Conversation</p>
-                </div>
-            </div>
             }
-            {deleteButton &&
-                <div className='close-delete' onClick={() => setDeleteButton(false)}>
-                <X size={20} color='white'/>
-            </div>
+            {contactInfo && <AddContact 
+                                    type="Contact" 
+                                    onClose={() => setContactInfo(false)}
+                            />
             }
-        </div>
-        <div className="chat-content">
-            <div className="bubble-chat-container">
-                {selectedConversation.messages?.map((message, index) => {
-                const lastMessage = selectedConversation.message.length - 1 === index
-                return (
-                    <Message 
-                        key={index}
-                        deleteButton={deleteButton} 
-                        lastMessage={lastMessage} 
-                        message={message} 
-                        index={index}
-                        avatar={contactData?.recipient?.avatarURL}
+            {deleteModal && <DialogueBox 
+                                    type='Delete Conversation' 
+                                    onClose={() => setDeleteModal(false)}
+                            />
+            }
+            <div className="chat-header">
+                <div className="chat-header-left">
+                    <img 
+                        style={{width: "40px", 
+                                height: "40px", 
+                                borderRadius: "50%", 
+                                objectFit: "cover"}}
+                        src={contactData?.recipient?.avatarURL || Dummy} 
+                        alt="profile" 
                     />
-                    )}
-                )}
+                    <p style={{fontWeight: "bold"}}>
+                        {contactData?.recipient?.name || selectedConversation?.recipients[0]?.id}
+                    </p>
+                </div>
+                <div 
+                    className="chat-header-right" 
+                    onClick={() => {setOption(!option); setDeleteButton(false)}}
+                >
+                    <DotsThreeOutline size={30} />
+                </div>
+                {option &&
+                <div 
+                    style={{width: "200px", 
+                            height: "fit-content",
+                            position: "absolute",
+                            padding: "5px 0",
+                            borderRadius: "5px",
+                            border: "#cccccc 1px solid",
+                            right: "10px",
+                            zIndex: "3",
+                            top: "40px", 
+                            backgroundColor: "aliceblue", 
+                            display: "flex", 
+                            flexDirection: "column"}}
+                >
+                    <div className='chat-option' onClick={() => setContactInfo(true)}>
+                        <p>Contact</p>
+                    </div>
+                    <div className='chat-option' onClick={() => setDeleteButton(!deleteButton)}>
+                        <p>Delete Message</p>
+                    </div>
+                    <div className='chat-option' onClick={() => setDeleteModal(true)}>
+                        <p>Delete Conversation</p>
+                    </div>
+                </div>
+                }
+                {deleteButton &&
+                    <div className='close-delete' onClick={() => setDeleteButton(false)}>
+                    <X size={20} color='white'/>
+                </div>
+                }
             </div>
-        </div>
-        <div className="chat-input">
-            <form 
-                action="sumbit" 
-                onSubmit={handleSubmit}
-            >
-                <input 
-                    type="text" 
-                    placeholder='type message' 
-                    value={text} onChange={e => setText(e.target.value)}
-                />
-                <button className='send-button'>
-                    <PaperPlaneRight color='white' size={22} />
-                </button>
-            </form>
+            <div className="chat-content">
+                <div className="bubble-chat-container">
+                    {selectedConversation.messages?.map((message, index) => {
+                    const lastMessage = selectedConversation.message.length - 1 === index
+                    return (
+                        <Message 
+                            key={index}
+                            deleteButton={deleteButton} 
+                            lastMessage={lastMessage} 
+                            message={message} 
+                            index={index}
+                            avatar={contactData?.recipient?.avatarURL}
+                        />
+                        )}
+                    )}
+                </div>
+            </div>
+            <div className="chat-input">
+                <form 
+                    action="sumbit" 
+                    onSubmit={handleSubmit}
+                >
+                    <input 
+                        type="text" 
+                        placeholder='type message' 
+                        value={text} onChange={e => setText(e.target.value)}
+                    />
+                    <button className='send-button'>
+                        <PaperPlaneRight color='white' size={22} />
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
   )

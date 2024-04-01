@@ -9,6 +9,7 @@ export function useSocket() {
 }
 
 export const SocketProvider = ({ children }) => {
+    
     const [socket, setSocket] = useState()
     const [connectionError, setConnectionError] = useState(false)
     const { id } = useApp()
