@@ -4,7 +4,10 @@ import React from 'react'
 const MessageStatus = ({ messageStatus }) => {
   
     return (
-    <div style={{display: "flex", alignItems: "flex-end"}}>
+    <div 
+        style={{display: "flex", 
+                alignItems: "flex-end"}}
+    >
         {
             messageStatus === 'sending'
             ? (<Clock size={18}/>)

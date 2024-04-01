@@ -16,8 +16,6 @@ export const SocketProvider = ({ children }) => {
     useEffect(() => {
         const newSocket = io(
             'https://kata-server-e0c6f72de554.herokuapp.com/'
-            // 'http://localhost:5000'
-            // 'https://new-reality-server-c7e0e1ab0eee.herokuapp.com/'
             , { query: {id} })
 
         newSocket.on('connect', () => {
@@ -29,18 +27,14 @@ export const SocketProvider = ({ children }) => {
             setConnectionError(true)
         })
 
-        // newSocket.on('message-sent', (status) => {
-        //     console.log('Message sent status:', status);
-        // })
-
         return () => {
             newSocket.close()
         }
     }, [id])
 
     const value = {
-        socket: socket,
-        connectionError: connectionError
+        socket,
+        connectionError
     }
 
     return  (

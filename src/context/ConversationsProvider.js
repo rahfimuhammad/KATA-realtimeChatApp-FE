@@ -152,10 +152,10 @@ export const ConversationsProvider = ({ id, children }) => {
 
 const value = {
     conversations: formattedConversations,
-    selectedConversation: selectedConversation,
-    selectedConversationId: selectedConversationId,
-    setConversations: setConversations,
-    setSelectedConversationId: setSelectedConversationId,
+    selectedConversation,
+    selectedConversationId,
+    setConversations,
+    setSelectedConversationId,
     createConversation,
     deleteMessage,
     sendMessage,

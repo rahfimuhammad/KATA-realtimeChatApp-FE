@@ -10,7 +10,10 @@ const Sidebar = () => {
   const { toggle, setToggle, isEditing } = useApp()
 
   return (
-    <div className='sidebar-container' id={toggle? 'active-sidebar' : ''}>
+    <div 
+      className='sidebar-container' 
+      id={toggle? 'active-sidebar' : ''}
+    >
         <Navbar/>
         {isEditing
         ? <CreateConversation/>
@@ -25,8 +28,20 @@ const Sidebar = () => {
                       borderRadius: "50%",
                       right: "-25px"
                     }}>
-                      <CaretRight style={{position: "absolute", top: "calc(50% - 10px)", left: "calc(100% - 25px"}} size={20} color='white' />
-                      <CaretLeft style={{position: "absolute", top: "calc(50% - 10px)", right: "calc(100% - 25px"}} size={20} color='white' />
+                      <CaretRight 
+                              style={{position: "absolute", 
+                                      top: "calc(50% - 10px)", 
+                                      left: "calc(100% - 25px"}} 
+                              size={20} 
+                              color='white' 
+                      />
+                      <CaretLeft 
+                              style={{position: "absolute", 
+                                      top: "calc(50% - 10px)", 
+                                      right: "calc(100% - 25px"}} 
+                              size={20} 
+                              color='white' 
+                      />
                     </div>
     </div>
   )

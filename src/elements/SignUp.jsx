@@ -82,27 +82,55 @@ const notifyError = (message) => toast.error(message, {
           <form action="submit" onSubmit={formik.handleSubmit} className='auth-form'>
                 <div className='auth-input'>
                   <label htmlFor='id'> Phone Number:</label>
-                  <input required type="number" name='id' onChange={handleChange}/>
+                  <input 
+                      required 
+                      type="number" 
+                      name='id' 
+                      onChange={handleChange}
+                  />
                 </div>
                 <div className='auth-input'>
                   <label htmlFor='name'>Username:</label>
-                  <input required type="text" name='name' onChange={handleChange} />
+                  <input 
+                      required 
+                      type="text" 
+                      name='name' 
+                      onChange={handleChange} 
+                  />
                 </div> 
                 <div className='auth-input'>
                   <label htmlFor='email'>Email:</label>
-                  <input required type="text" name='email' onChange={handleChange} />
+                  <input 
+                      required 
+                      type="text" 
+                      name='email' 
+                      onChange={handleChange} 
+                  />
                 </div>
                 <div className='auth-input'>
                   <label htmlFor='avatarURL'>Avatar Link:</label>
-                  <input required type="text" name='avatarURL' onChange={handleChange}/>
+                  <input 
+                      required 
+                      type="text" 
+                      name='avatarURL' 
+                      onChange={handleChange}
+                  />
                 </div>
                 <div className='auth-input'>
                   <label htmlFor='password'>Password:</label>
-                  <input required type="password" name='password' onChange={handleChange}/>
+                  <input 
+                      required 
+                      type="password" 
+                      name='password' 
+                      onChange={handleChange}
+                  />
                 </div>
-            <button type='submit' className='btn-submit'>
+            <button 
+                type='submit' 
+                className='btn-submit'
+            >
               {loading
-              ? <Spinner size={22}/> 
+              ? <Spinner size={16}/> 
               : "SIGN UP"}
             </button>
           </form>

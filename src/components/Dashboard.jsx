@@ -21,8 +21,16 @@ const Dashboard = () => {
         ? (<Main/>)
         : (<WelcomeChat/>)
         }
-        {addContact && <AddContact onClose={() => setAddContact(false)} type="Add Contact" />}
-        {logoutModal && <DialogueBox onClose={() => setLogoutModal(false)} type='Logout'/>}
+        {addContact && <AddContact 
+                                onClose={() => setAddContact(false)} 
+                                type="Add Contact" 
+                        />
+        }
+        {logoutModal && <DialogueBox 
+                                onClose={() => setLogoutModal(false)} 
+                                type='Logout'
+                        />
+        }
     </div>
   )
 }

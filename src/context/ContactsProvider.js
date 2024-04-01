@@ -70,10 +70,10 @@ export const ContactsProvider = ({children}) => {
     
 
     const value = {
-        contacts: contacts,
-        setContacts: setContacts,
-        addToContact: addToContact,
-        loading: loading
+        contacts,
+        setContacts,
+        addToContact,
+        loading
     }
 
     return (

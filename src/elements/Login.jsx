@@ -49,18 +49,32 @@ const Login = () => {
   }
 
   return (
-          <form onSubmit={formik.handleSubmit} action="submit" className='auth-form'>
+          <form 
+              onSubmit={formik.handleSubmit} 
+              action="submit" 
+              className='auth-form'>
             <div className='auth-input'>
               <label htmlFor='id'>Phone Number: </label>
-              <input required type="number" name='id' onChange={handleChange}/>
+              <input 
+                  required type="number" 
+                  name='id' 
+                  onChange={handleChange}
+              />
             </div>
             <div className='auth-input'>
               <label htmlFor='password'>Password:</label>
-              <input required type="password" name='password' onChange={handleChange}/>
+              <input 
+                  required 
+                  type="password" 
+                  name='password' 
+                  onChange={handleChange}
+              />
             </div>
-            <button type='submit' className='btn-submit'>
+            <button 
+                type='submit' 
+                className='btn-submit'>
               {loading
-              ? <Spinner size={22}/> 
+              ? <Spinner size={16}/> 
               : "SIGN IN" 
               }
             </button>

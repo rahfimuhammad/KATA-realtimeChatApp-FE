@@ -18,17 +18,27 @@ const ChatList = () => {
     <div className='sidebar-content'>
         <div className="search-input">
             <MagnifyingGlass size={20} />
-            <input type="text" placeholder='Search' />
+            <input 
+                type="text" 
+                placeholder='Search' 
+            />
         </div>
         <div className="sidebar-content-header">
             <h4>Conversations</h4>
-            <div className='btn-circle' onClick={handleEdit}>
+            <div 
+                className='btn-circle' 
+                onClick={handleEdit}
+            >
                 <Plus size={20} color='white'/>
             </div>
         </div>
         <div className="sidebar-content-list">
             {!conversations.length
-            ? (<div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+            ? (<div 
+                    style={{width: "100%", 
+                            display: "flex", 
+                            justifyContent: "center"}}
+                    >
                 <span>
                     No conversation yet
                 </span>

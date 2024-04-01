@@ -20,22 +20,22 @@ export const AppProvider = ({ children }) => {
 
 
     const value = {
-        isEditing: isEditing,
-        setIsEditing: setIsEditing,
-        toggle: toggle,
-        setToggle: setToggle,
-        id: id,
-        setId: setId,
-        profile: profile,
-        setProfile: setProfile,
-        deleteModal: deleteModal,
-        setDeleteModal: setDeleteModal,
-        logoutModal: logoutModal,
-        setLogoutModal: setLogoutModal,
-        addContact: addContact,
-        setAddContact: setAddContact,
-        contactInfo: contactInfo,
-        setContactInfo: setContactInfo
+        isEditing,
+        setIsEditing,
+        toggle,
+        setToggle,
+        id,
+        setId,
+        profile,
+        setProfile,
+        deleteModal,
+        setDeleteModal,
+        logoutModal,
+        setLogoutModal,
+        addContact,
+        setAddContact,
+        contactInfo,
+        setContactInfo
     }
 
     return (

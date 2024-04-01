@@ -10,10 +10,24 @@ const Auth = () => {
   const [isRegister, setIsRegister] = useState(false)
 
   return (
-    <div className='auth' style={{width: "100%", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
+    <div 
+      className='auth' 
+      style={{width: "100%", 
+              height: "100vh", 
+              display: "flex", 
+              justifyContent: "center", 
+              alignItems: "center"}}
+    >
         <div className="auth-container">
-          <img src={Logo} alt="kata chat app" style={{width: "150px", height: "auto"}} />
-          <h3>{isRegister? "Sign Up" : "Sign In"}</h3>
+          <img 
+              src={Logo} 
+              alt="kata chat app" 
+              style={{width: "150px", 
+                      height: "auto"}} 
+          />
+          <h3>
+            {isRegister? "Sign Up" : "Sign In"}
+          </h3>
           {
             isRegister
             ? (<SignUp setIsRegister={setIsRegister}/>)
