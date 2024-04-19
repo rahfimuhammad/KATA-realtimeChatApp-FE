@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSocket } from '../context/SocketProvider'
 import { useContacts } from '../context/ContactsProvider'
 import { useApp } from '../context/AppProvider'
@@ -18,6 +18,38 @@ const Chat = () => {
     const { connectionError } = useSocket()
     const { contacts } = useContacts()
     const { toggle, setToggle, deleteModal, setDeleteModal, contactInfo, setContactInfo } = useApp()
+    // const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         console.log("Hello World")
+    //         console.log(document.documentElement.clientHeight)
+    //         setKeyboardHeight(document.documentElement.clientHeight)
+
+    //         window.addEventListener("resize", handleResize);
+    //     };
+
+    //     handleResize()
+        
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize);
+    //     };
+    // }, []);
+    
+    // useEffect(() => {
+    //     const handleFocus = () => {
+    //         setKeyboardHeight(document.documentElement.clientHeight)
+    //         console.log(keyboardHeight)
+
+    //         document.addEventListener("focus", handleFocus, true);
+    //     };
+
+    //     handleFocus()
+        
+    //     return () => {
+    //         document.removeEventListener("focus", handleFocus, true);
+    //     };
+    // }, [])
 
     const contactData = contacts.find((contact) => {
         return contact?.recipientId === selectedConversation.recipients[0]?.id
@@ -89,7 +121,7 @@ const Chat = () => {
                                 borderRadius: "5px",
                                 border: "#cccccc 1px solid",
                                 right: "10px",
-                                zIndex: "3",
+                                zIndex: "7",
                                 top: "40px", 
                                 backgroundColor: "aliceblue", 
                                 display: "flex", 
