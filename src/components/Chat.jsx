@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSocket } from '../context/SocketProvider'
 import { useContacts } from '../context/ContactsProvider'
 import { useApp } from '../context/AppProvider'
