@@ -4,6 +4,7 @@ import { useContacts } from '../context/ContactsProvider'
 import { useApp } from '../context/AppProvider'
 import { PaperPlaneRight, DotsThreeOutline, X } from 'phosphor-react'
 import { useConversations } from '../context/ConversationsProvider'
+import { useViewportDetect } from '../hooks/useViewportDetect'
 import Message from '../elements/Message'
 import AddContact from '../elements/AddContact'
 import DialogueBox from '../elements/DialogueBox'
@@ -18,39 +19,7 @@ const Chat = () => {
     const { connectionError } = useSocket()
     const { contacts } = useContacts()
     const { toggle, setToggle, deleteModal, setDeleteModal, contactInfo, setContactInfo } = useApp()
-    // const [keyboardHeight, setKeyboardHeight] = useState(0);
-
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         console.log("Hello World")
-    //         console.log(document.documentElement.clientHeight)
-    //         setKeyboardHeight(document.documentElement.clientHeight)
-
-    //         window.addEventListener("resize", handleResize);
-    //     };
-
-    //     handleResize()
-        
-    //     return () => {
-    //         window.removeEventListener("resize", handleResize);
-    //     };
-    // }, []);
-    
-    // useEffect(() => {
-    //     const handleFocus = () => {
-    //         setKeyboardHeight(document.documentElement.clientHeight)
-    //         console.log(keyboardHeight)
-
-    //         document.addEventListener("focus", handleFocus, true);
-    //     };
-
-    //     handleFocus()
-        
-    //     return () => {
-    //         document.removeEventListener("focus", handleFocus, true);
-    //     };
-    // }, [])
-
+    const { onKeyboardAvoid, keyboardHeight } = useViewportDetect()
     const contactData = contacts.find((contact) => {
         return contact?.recipientId === selectedConversation.recipients[0]?.id
     })
@@ -72,9 +41,12 @@ const Chat = () => {
     }
 
     return (
-        <div className='main-container'>
+        <div 
+            className='main-container' 
+            style={{height: (onKeyboardAvoid || keyboardHeight) ? `${onKeyboardAvoid}px` : "100vh"}}>
             <div 
-                className='chat-container' 
+                className='chat-container'
+                style={{height: (onKeyboardAvoid || keyboardHeight) ? `${onKeyboardAvoid}px` : "100vh"}} 
                 onClick={closeOption}>
                 {connectionError && <div className='no-connection'>
                     <p style={{color: "white"}}>
@@ -144,7 +116,9 @@ const Chat = () => {
                     </div>
                     }
                 </div>
-                <div className="chat-content">
+                <div 
+                    className="chat-content" 
+                    style={{height: (onKeyboardAvoid || keyboardHeight) ? `${window.innerHeight - keyboardHeight - 120}px` : "calc(100vh - 120px)" }}>
                     <div className="bubble-chat-container">
                         {selectedConversation.messages?.map((message, index) => {
                         const lastMessage = selectedConversation.message.length - 1 === index
@@ -164,14 +138,13 @@ const Chat = () => {
                 <div className="chat-input">
                     <form 
                         action="sumbit" 
-                        onSubmit={handleSubmit}
                     >
                         <input 
                             type="text" 
                             placeholder='type message' 
                             value={text} onChange={e => setText(e.target.value)}
                         />
-                        <button className='send-button' disabled={!text}>
+                        <button className='send-button' disabled={!text} onClick={(e) => handleSubmit(e)}>
                             <PaperPlaneRight color='white' size={22} />
                         </button>
                     </form>
