@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useSocket } from '../context/SocketProvider'
 import { useContacts } from '../context/ContactsProvider'
 import { useApp } from '../context/AppProvider'
@@ -20,6 +20,7 @@ const Chat = () => {
     const { contacts } = useContacts()
     const { toggle, setToggle, deleteModal, setDeleteModal, contactInfo, setContactInfo } = useApp()
     const { onKeyboardAvoid, keyboardHeight } = useViewportDetect()
+    const inputRef = useRef(null);
     const contactData = contacts.find((contact) => {
         return contact?.recipientId === selectedConversation.recipients[0]?.id
     })
@@ -31,6 +32,7 @@ const Chat = () => {
         text)
 
         setText('')
+        inputRef.current.focus();
     }
 
     const closeOption = () => {
@@ -140,6 +142,7 @@ const Chat = () => {
                         action="sumbit" 
                     >
                         <input 
+                            ref={inputRef}
                             type="text" 
                             placeholder='type message' 
                             value={text} onChange={e => setText(e.target.value)}
