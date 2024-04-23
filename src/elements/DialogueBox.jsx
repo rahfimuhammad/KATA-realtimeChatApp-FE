@@ -26,7 +26,8 @@ const DialogueBox = ({ type, onClose }) => {
               top: "0",
               left: "0",
               width: "100%",
-              height: "100vh",
+              height: "100%",
+              // height: "100vh",
               display: "flex",
               justifyContent: "center",
               alignItems: "center"}}

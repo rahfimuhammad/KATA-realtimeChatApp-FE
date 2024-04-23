@@ -1,6 +1,7 @@
 import React from 'react'
 import { useConversations } from '../context/ConversationsProvider';
 import { useApp } from '../context/AppProvider';
+import { useViewportDetect } from '../hooks/useViewportDetect'
 import '../App.css';
 import Sidebar from '../components/Sidebar';
 import Chat from '../components/Chat';
@@ -12,9 +13,14 @@ const Dashboard = () => {
 
   const { logoutModal, setLogoutModal, addContact, setAddContact } = useApp()
   const { selectedConversationId } = useConversations()
+  const { onKeyboardAvoid, keyboardHeight } = useViewportDetect()
+
 
   return (
-    <div className='app-container'>
+    <div 
+      className='app-container'
+      style={{height: (onKeyboardAvoid || keyboardHeight) ? `${onKeyboardAvoid}px` : "100vh"}}
+      >
         <Sidebar/>
         {
         selectedConversationId

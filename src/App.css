@@ -1,13 +1,14 @@
 html,
 body {
-  height: 100vh;
+  /* height: 100vh; */
+  /* overflow: hidden; */
 }
 #root {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   overflow: hidden;
 }
 
@@ -31,7 +32,7 @@ input[type=number] {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;}
 
 .main-container {
@@ -42,7 +43,7 @@ input[type=number] {
 .sidebar-container {
   border-right: 1px solid #cccccc;
   width: calc(27% - 1px);
-  height: 100vh;
+  height: 100%;
   display: flex;
   background-color: aliceblue;}
 
@@ -51,7 +52,7 @@ input[type=number] {
 
 .chatlist-container {
   width: 90%;
-  height: calc(100vh - 20px);
+  height: calc(100% - 20px);
   padding-top: 20px;
   display: flex;
   flex-direction: column;
@@ -110,7 +111,8 @@ input[type=number] {
   padding: 10px 10px 0 10px;
   width: calc(100% - 20px);
   max-width: calc(100% - 20px);
-  height: calc(100vh - 110px);
+  height: calc(100% - 90px);
+  /* height: calc(100vh - 90px); */
   overflow-y: auto;}
 
 .userlist-item {
@@ -137,7 +139,7 @@ input[type=number] {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  height: calc(100vh - 20px);
+  height: calc(100% - 20px);
   background-color: #212121;}
 
 /* Chat Component */
@@ -510,7 +512,7 @@ input[type=number] {
         width: calc(60% - 1px);
         z-index: 10;
         left: -60%;
-        transition: 0.8s ease;
+        transition: 0.4s ease;
         position: absolute;
         top: 0;}
       
@@ -523,7 +525,8 @@ input[type=number] {
         display: block;}
       
       #active-sidebar {
-        left: 0;}
+        left: 0;
+        transform: translateX(0);}
       
       .no-connection {
         right: calc(50% - 100px);}}
@@ -542,9 +545,6 @@ input[type=number] {
       .sidebar-container {
         left: -90%;
         width: 90%;}
-          
-      #active-sidebar {
-        left: 0;}
       
       .bubble-chat {
         max-width: 80%;}}
@@ -581,10 +581,12 @@ input[type=number] {
 
       .sidebar-content {
         width: 100%;
-        height: calc(100vh - 70px);}
+        height: calc(100% - 70px);}
+        /* height: calc(100vh - 70px);} */
 
       .sidebar-content-list {
-        height: calc(100vh - 160px);
+        height: calc(100% - 160px);
+        /* height: calc(100vh - 160px); */
         align-items: center;}
         
       p {

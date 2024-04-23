@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useSocket } from '../context/SocketProvider'
 import { useContacts } from '../context/ContactsProvider'
 import { useApp } from '../context/AppProvider'
@@ -32,7 +32,7 @@ const Chat = () => {
         text)
 
         setText('')
-        inputRef.current.focus();
+        // inputRef.current.focus();
     }
 
     const closeOption = () => {

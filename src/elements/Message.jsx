@@ -22,7 +22,7 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
         }
     };
 
-  return (
+    return (
         <div 
             className={`bubble-chat-wrapper ${message.fromMe? 'owner' : ''}`}  
             key={index} 
@@ -69,7 +69,7 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
                     }
             </div>
         </div>
-  )
+    )
 }
 
 export default Message
