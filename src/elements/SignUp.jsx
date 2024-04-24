@@ -71,7 +71,7 @@ const notifyError = (message) => toast.error(message, {
         onSubmit: handleSubmit,
         validationSchema: yup.object().shape({
             id: yup.string().required().min(10).max(13),
-            name: yup.string().required().min(5),
+            name: yup.string().required().min(5).max(15),
             email: yup.string().required().email(),
             avatarURL: yup.string().required().url(),
             password: yup.string().required().min(6)
@@ -87,7 +87,11 @@ const notifyError = (message) => toast.error(message, {
                       type="number" 
                       name='id' 
                       onChange={handleChange}
+                      onBlur={formik.handleBlur}
                   />
+                  {formik.touched.id && formik.errors.id ? (
+                    <p className="error-message">{formik.errors.id}</p>
+                  ) : null}
                 </div>
                 <div className='auth-input'>
                   <label htmlFor='name'>Username:</label>
@@ -95,8 +99,12 @@ const notifyError = (message) => toast.error(message, {
                       required 
                       type="text" 
                       name='name' 
-                      onChange={handleChange} 
+                      onChange={handleChange}
+                      onBlur={formik.handleBlur} 
                   />
+                  {formik.touched.name && formik.errors.name ? (
+                    <p className="error-message">{formik.errors.name}</p>
+                  ) : null}
                 </div> 
                 <div className='auth-input'>
                   <label htmlFor='email'>Email:</label>
@@ -104,8 +112,12 @@ const notifyError = (message) => toast.error(message, {
                       required 
                       type="text" 
                       name='email' 
-                      onChange={handleChange} 
+                      onChange={handleChange}
+                      onBlur={formik.handleBlur} 
                   />
+                  {formik.touched.email && formik.errors.email ? (
+                    <p className="error-message">{formik.errors.email}</p>
+                  ) : null}
                 </div>
                 <div className='auth-input'>
                   <label htmlFor='avatarURL'>Avatar Link:</label>
@@ -114,7 +126,11 @@ const notifyError = (message) => toast.error(message, {
                       type="text" 
                       name='avatarURL' 
                       onChange={handleChange}
+                      onBlur={formik.handleBlur}
                   />
+                  {formik.touched.avatarURL && formik.errors.avatarURL ? (
+                    <p className="error-message">{formik.errors.avatarURL}</p>
+                  ) : null}
                 </div>
                 <div className='auth-input'>
                   <label htmlFor='password'>Password:</label>
@@ -123,7 +139,11 @@ const notifyError = (message) => toast.error(message, {
                       type="password" 
                       name='password' 
                       onChange={handleChange}
+                      onBlur={formik.handleBlur}
                   />
+                  {formik.touched.password && formik.errors.password ? (
+                    <p className="error-message">{formik.errors.password}</p>
+                  ) : null}
                 </div>
             <button 
                 type='submit' 
@@ -131,7 +151,7 @@ const notifyError = (message) => toast.error(message, {
             >
               {loading
               ? <Spinner size={16}/> 
-              : "SIGN UP"}
+              : "Sign Up"}
             </button>
           </form>
   )

@@ -74,8 +74,8 @@ const Login = () => {
                 type='submit' 
                 className='btn-submit'>
               {loading
-              ? <Spinner size={16}/> 
-              : "SIGN IN" 
+              ? <Spinner size={25}/> 
+              : "Sign In" 
               }
             </button>
           </form>

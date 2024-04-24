@@ -59,7 +59,7 @@ const AddContact = ({ type, onClose }) => {
                                 alignItems: "center"}} 
                         onClick={submitContact}
                     >
-                        {loading? <Spinner size={16}/> : "Save"}
+                        {loading? <Spinner size={23}/> : "Save"}
                     </button>
                     <button 
                         style={{backgroundColor: "#FF5050", 

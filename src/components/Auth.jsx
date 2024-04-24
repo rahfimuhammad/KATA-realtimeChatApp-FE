@@ -13,8 +13,8 @@ const Auth = () => {
     <div 
       className='auth' 
       style={{width: "100%", 
-              height: "100%", 
-              // height: "100vh", 
+              // height: "100%", 
+              height: "100vh", 
               display: "flex", 
               justifyContent: "center", 
               alignItems: "center"}}

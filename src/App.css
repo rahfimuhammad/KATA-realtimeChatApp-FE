@@ -15,8 +15,12 @@ body {
 p, h2, h3, h4, h5 {
   margin: 0;}
 
+p, input, button {
+  font-size: 16px;
+}
+
 * {
-  font-family: 'Arimo', sans-serif;}
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
   
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -67,6 +71,7 @@ input[type=number] {
   align-items: center;
   background-color: white;
   padding: 0 5px;
+  height: 40px;
   border: #cccccc 1px solid;
   outline: none;
   width: 90%}
@@ -76,7 +81,7 @@ input[type=number] {
   border: none;
   outline: none;
   width: calc(100% - 10px);
-  padding: 8px 5px;}
+  padding: 0px 5px;}
   
 .sidebar-content {
   padding-top: 20px;
@@ -403,12 +408,12 @@ input[type=number] {
   justify-content: center;
   align-items: center;
   width: calc(100% - 12px);
-  outline: none;
-  padding: 8px 5px;}
+  outline: none;}
 
 .auth-input input {
-  padding: 8px 8px;
+  padding: 0px 8px;
   border: #6f6f6f 1px solid;
+  height: 40px;
   border-radius: 5px;}
 
 .auth-container {
@@ -466,7 +471,8 @@ input[type=number] {
     
 .add-contact form input {
   width: calc(100% - 10px);
-  padding: 7px 5px;
+  padding: 0px 5px;
+  height: 40px;
   border: #cccccc 1px solid;
   border-radius: 5px;}
 
@@ -477,13 +483,13 @@ input[type=number] {
     
 .button-container button {
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
   outline: none;
   border-radius: 5px;
   color: white;
   width: 100%;
-  padding: 10px 0;}
+  height: 40px;}
 
     @media only screen and (max-width: 1200px) {
       
@@ -532,15 +538,6 @@ input[type=number] {
         right: calc(50% - 100px);}}
 
     @media only screen and (max-width: 600px) {
-
-      p, input, button {
-        font-size: 18px;}
-
-      h4 {
-        font-size: 20px;}
-
-      h5 {
-        font-size: 22px;}
     
       .sidebar-container {
         left: -90%;
@@ -585,16 +582,8 @@ input[type=number] {
         /* height: calc(100vh - 70px);} */
 
       .sidebar-content-list {
-        height: calc(100% - 160px);
-        /* height: calc(100vh - 160px); */
+        height: calc(100% - 100px);
+        /* height: calc(100vh - 100px); */
         align-items: center;}
-        
-      p {
-        font-size: 14px;}
-
-      h4 {
-        font-size: 16px;}
-
-      h5 {
-        font-size: 18px;}}
+      }
   
