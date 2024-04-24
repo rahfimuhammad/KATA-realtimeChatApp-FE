@@ -32,6 +32,7 @@ input[type=number] {
     -moz-appearance: textfield;}
 
 .error-message {
+  font-size: 14px;
   color: red;}
 
 /* Main Component */

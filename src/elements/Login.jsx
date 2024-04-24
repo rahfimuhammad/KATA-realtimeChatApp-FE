@@ -59,7 +59,11 @@ const Login = () => {
                   required type="number" 
                   name='id' 
                   onChange={handleChange}
+                  onBlur={formik.handleBlur}
               />
+              {formik.touched.id && formik.errors.id ? (
+                    <p className="error-message">{formik.errors.id}</p>
+                  ) : null}
             </div>
             <div className='auth-input'>
               <label htmlFor='password'>Password:</label>
@@ -68,7 +72,11 @@ const Login = () => {
                   type="password" 
                   name='password' 
                   onChange={handleChange}
+                  onBlur={formik.handleBlur}
               />
+              {formik.touched.password && formik.errors.password ? (
+                  <p className="error-message">{formik.errors.password}</p>
+              ) : null}
             </div>
             <button 
                 type='submit' 
