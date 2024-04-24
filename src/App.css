@@ -1,23 +1,24 @@
 html,
 body {
   /* height: 100vh; */
-  /* overflow: hidden; */
-}
+  /* overflow: hidden; */}
+
 #root {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   /* height: 100vh; */
-  overflow: hidden;
-}
+  overflow: hidden;}
 
 p, h2, h3, h4, h5 {
   margin: 0;}
 
 p, input, button {
-  font-size: 16px;
-}
+  font-size: 18px;}
+
+h4 {
+  font-size: 19px;}
 
 * {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
@@ -29,6 +30,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;}
+
+.error-message {
+  color: red;}
 
 /* Main Component */
 
@@ -538,6 +542,12 @@ input[type=number] {
         right: calc(50% - 100px);}}
 
     @media only screen and (max-width: 600px) {
+
+      p, input, button {
+        font-size: 20px;}
+      
+      h4 {
+        font-size: 21px;}
     
       .sidebar-container {
         left: -90%;
