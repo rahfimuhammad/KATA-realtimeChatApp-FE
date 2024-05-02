@@ -150,7 +150,7 @@ const notifyError = (message) => toast.error(message, {
                 className='btn-submit'
             >
               {loading
-              ? <Spinner size={16}/> 
+              ? <Spinner size={25}/> 
               : "Sign Up"}
             </button>
           </form>

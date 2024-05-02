@@ -4,11 +4,35 @@ import { useApp } from '../context/AppProvider'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import Spinner from './Spinner'
+import { toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
   const { setId, setProfile } = useApp()
   const [loading, setLoading] = useState(false)
+  const notifySuccess = (message) => toast.success(message, {
+    position: "top-center",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+    });
+const notifyError = (message) => toast.error(message, {
+    position: "top-center",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+    });
   
   const login = async (data) => {
       
@@ -17,11 +41,13 @@ const Login = () => {
       const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/login',
       data
       )
+      notifySuccess(response?.message)
       setId(response?.data?.id)
       setProfile(response?.data)
       setLoading(false)
     } catch (error) {
-      console.log(error)
+      notifyError(error.message)
+    } finally {
       setLoading(false)
     }
   }
