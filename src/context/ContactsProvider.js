@@ -41,10 +41,10 @@ export const ContactsProvider = ({children}) => {
 
     const getContact = useCallback(async () => {
         try {
-          const response = await axios.get(`https://kata-server-e0c6f72de554.herokuapp.com/contact/${id}`)
-          setContacts(response?.data)
+            const response = await axios.get(`https://kata-server-e0c6f72de554.herokuapp.com/contact/${id}`)
+            setContacts(response?.data)
         } catch (error) {
-          console.log(error.message)
+            console.log(error.message)
         }
     }, [id, setContacts])
     
