@@ -1,6 +1,5 @@
 import React from 'react'
 import { SignOut } from 'phosphor-react'
-import Logo from '../assets/logo.png'
 import { useApp } from '../context/AppProvider'
 
 const Navbar = () => {
@@ -10,7 +9,7 @@ const Navbar = () => {
   return (
     <div className='navbar-container'>
         <img 
-            src={Logo} 
+            src='/assets/logo.png' 
             alt="logo" 
             style={{width: "30px", 
                     height: "auto"}}

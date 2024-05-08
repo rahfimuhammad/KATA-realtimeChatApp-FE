@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import Logo from '../assets/logoAuth.png'
 import Login from '../elements/Login'
 import SignUp from '../elements/SignUp'
 
@@ -21,7 +20,7 @@ const Auth = () => {
     >
         <div className="auth-container">
           <img 
-              src={Logo} 
+              src='/assets/logoAuth.png' 
               alt="kata chat app" 
               style={{width: "150px", 
                       height: "auto"}} 

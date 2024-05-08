@@ -1,6 +1,4 @@
 import React from 'react'
-import Mobile from '../assets/desktop.png'
-import Desktop from '../assets/mobile.png'
 
 const WelcomeChat = () => {
   return (
@@ -17,8 +15,8 @@ const WelcomeChat = () => {
                   Welcome to Kata
                 </div>
                 <div className='welcome-image'>
-                    <img src={Desktop} alt="bubble desktop" />
-                    <img src={Mobile} alt="bubble mobile" />
+                    <img src='/assets/desktop.png' alt="bubble desktop" />
+                    <img src='/assets/mobile.png' alt="bubble mobile" />
                 </div>
                 <p className='welcome-message'>
                   Chat instantly on mobile or desktop

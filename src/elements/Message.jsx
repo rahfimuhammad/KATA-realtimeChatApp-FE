@@ -4,7 +4,6 @@ import { useConversations } from '../context/ConversationsProvider'
 import { formattedTime, getMessageDate, formattedTimeChatList } from '../function/useFormattedTime'
 import { useApp } from '../context/AppProvider'
 import MessageStatus from './MessageStatus'
-import Dummy from '../assets/dummy.png'
 
 const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
 
@@ -44,7 +43,7 @@ const Message = ({ deleteButton, lastMessage, message, index, avatar }) => {
                     || getMessageDate(message?.createdAt, selectedConversation.message[index - 1]?.createdAt)) 
                     && <img 
                             className='message-profile-image' 
-                            src={!message.fromMe? (avatar || Dummy) : profile?.avatarURL} 
+                            src={!message.fromMe? (avatar || '/assets/dummy.png') : profile?.avatarURL} 
                             alt="profile" 
                     />
                     }

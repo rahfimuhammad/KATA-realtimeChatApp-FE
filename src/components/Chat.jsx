@@ -10,7 +10,6 @@ import Picker from '@emoji-mart/react'
 import Message from '../elements/Message'
 import AddContact from '../elements/AddContact'
 import DialogueBox from '../elements/DialogueBox'
-import Dummy from '../assets/dummy.png'
 
 const Chat = () => {
 
@@ -98,7 +97,7 @@ const Chat = () => {
                                     height: "40px", 
                                     borderRadius: "50%", 
                                     objectFit: "cover"}}
-                            src={contactData?.recipient?.avatarURL || Dummy} 
+                            src={contactData?.recipient?.avatarURL || '/assets/dummy.png'} 
                             alt="profile" 
                         />
                         <p style={{fontWeight: "bold"}}>

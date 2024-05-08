@@ -3,7 +3,6 @@ import { useConversations } from '../context/ConversationsProvider'
 import { useApp } from '../context/AppProvider'
 import { formattedTimeChatList } from '../function/useFormattedTime'
 import { useContacts } from '../context/ContactsProvider'
-import Dummy from '../assets/dummy.png'
 
 const UserListItem = ({ conversation }) => {
 
@@ -32,7 +31,7 @@ const UserListItem = ({ conversation }) => {
     >
         <img 
           className='profile-picture'
-          src={profilePict || Dummy} 
+          src={profilePict || '/assets/dummy.png'} 
           alt="profile-user" 
         />
         <div 
