@@ -1,10 +1,11 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useSocket } from '../context/SocketProvider'
 import { useContacts } from '../context/ContactsProvider'
 import { useApp } from '../context/AppProvider'
-import { PaperPlaneRight, DotsThreeOutline, X } from 'phosphor-react'
+import { PaperPlaneRight, DotsThreeOutline, X, SmileyWink } from 'phosphor-react'
 import { useConversations } from '../context/ConversationsProvider'
 import { useViewportDetect } from '../hooks/useViewportDetect'
+import EmojiPicker from 'emoji-picker-react';
 import Message from '../elements/Message'
 import AddContact from '../elements/AddContact'
 import DialogueBox from '../elements/DialogueBox'
@@ -13,6 +14,7 @@ import Dummy from '../assets/dummy.png'
 const Chat = () => {
 
     const [text, setText] = useState("")
+    const [emoji, setEmoji] = useState(false)
     const [option, setOption] = useState(false)
     const [deleteButton, setDeleteButton] = useState()
     const { sendMessage, selectedConversation } = useConversations()
@@ -40,6 +42,28 @@ const Chat = () => {
             setOption(false)
             setToggle(false)
         }
+    }
+
+    useEffect(() => {
+        const closeEmoji = () => {
+            if(onKeyboardAvoid || keyboardHeight) setEmoji(false)
+        }
+
+        closeEmoji()
+    }, [onKeyboardAvoid, keyboardHeight])
+
+    const handleAddText = (textToSend) => {
+        setText(textToSend)
+    }
+
+    const handleEmoji = (emoji) => {
+        setText(prevState => prevState + emoji)
+    }
+
+    const emojiAppear = () => {
+        setTimeout(() => {
+            setEmoji(!emoji)
+        }, 200)
     }
 
     return (
@@ -137,16 +161,42 @@ const Chat = () => {
                         )}
                     </div>
                 </div>
-                <div className="chat-input">
+                <div className="chat-input" style={{position: "relative"}}>
                     <form 
                         action="sumbit" 
                     >
-                        <input 
+                        <div
+                            className='emoji-button' 
+                            onClick={() => emojiAppear()}
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                cursor: "pointer",
+                            }}
+                        >
+                            <SmileyWink size={32} color='#6f6f6f' />
+                        </div>
+                        <input
+                            className='chat-input-field' 
                             ref={inputRef}
                             type="text" 
                             placeholder='type message' 
-                            value={text} onChange={e => setText(e.target.value)}
+                            value={text} onChange={e => handleAddText(e.target.value)}
                         />
+                        {
+                        emoji && 
+                        <span
+                            style={{position: "absolute", bottom: "70px", right: "10px", zIndex: "9"}}
+                        >
+                            <EmojiPicker
+                                onEmojiClick={(e) => handleEmoji(e.emoji)}
+                                height={350}
+                                width={300}
+                                autoFocusSearch={false}
+                            />
+                        </span>
+                        }
                         <button className='send-button' disabled={!text} onClick={(e) => handleSubmit(e)}>
                             <PaperPlaneRight color='white' size={22} />
                         </button>
