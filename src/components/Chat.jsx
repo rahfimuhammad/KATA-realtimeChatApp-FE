@@ -5,7 +5,8 @@ import { useApp } from '../context/AppProvider'
 import { PaperPlaneRight, DotsThreeOutline, X, SmileyWink } from 'phosphor-react'
 import { useConversations } from '../context/ConversationsProvider'
 import { useViewportDetect } from '../hooks/useViewportDetect'
-import EmojiPicker from 'emoji-picker-react';
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 import Message from '../elements/Message'
 import AddContact from '../elements/AddContact'
 import DialogueBox from '../elements/DialogueBox'
@@ -187,13 +188,20 @@ const Chat = () => {
                         {
                         emoji && 
                         <span
-                            style={{position: "absolute", bottom: "70px", right: "10px", zIndex: "9"}}
+                            style={{
+                                backgroundColor: "aliceblue",
+                                position: "absolute", 
+                                bottom: "70px", 
+                                right: "10px", 
+                                zIndex: "9"
+                            }}
                         >
-                            <EmojiPicker
-                                onEmojiClick={(e) => handleEmoji(e.emoji)}
-                                height={350}
-                                width={300}
-                                autoFocusSearch={false}
+                            <Picker 
+                                data={data} 
+                                onEmojiSelect={emoji => handleEmoji(emoji.native)}
+                                perLine={7}
+                                theme='light'
+                                onClickOutside={() => setEmoji(!emoji)}    
                             />
                         </span>
                         }
