@@ -38,7 +38,7 @@ const notifyError = (message) => toast.error(message, {
       
     try {
       setLoading(true)
-      const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/login',
+      const response = await axios.post('https://kata-realtimechatapp-be.onrender.com/login',
       data
       )
       notifySuccess(response?.message)

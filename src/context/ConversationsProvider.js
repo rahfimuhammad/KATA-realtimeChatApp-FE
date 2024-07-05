@@ -5,6 +5,7 @@ import { useSocket } from "./SocketProvider";
 import { arrayEquality } from "../function/useArray";
 import { v4 as uuidV4 } from 'uuid';
 
+// Setting up ConversationsContext
 const ConversationsContext = React.createContext()
 
 export const useConversations = () => {
@@ -18,6 +19,7 @@ export const ConversationsProvider = ({ id, children }) => {
     const {contacts} = useContacts()
     const { socket } = useSocket()
 
+    // Create Conversation 
     const createConversation = (recipients) => {
 
         const existingConversation = conversations.find(conversation =>
@@ -32,7 +34,8 @@ export const ConversationsProvider = ({ id, children }) => {
                 return newConversation;
             }
         };
-        
+
+    // Add message to conversation on Local Storage
     const addMessageToConversation = useCallback(({ messageId, recipients, text, sender, status }) => {
         setConversations(prevConversations => {
             let madeChange = false;
@@ -54,6 +57,7 @@ export const ConversationsProvider = ({ id, children }) => {
         })
     }, [setConversations]);
 
+    // Add message to conversation when receiving message
     useEffect(() => {
         if(socket == null) return
 
@@ -63,6 +67,7 @@ export const ConversationsProvider = ({ id, children }) => {
 
     }, [socket, addMessageToConversation])
 
+    // Add message status to conversation
     useEffect(() => {
         if (socket == null) return;
     
@@ -84,6 +89,7 @@ export const ConversationsProvider = ({ id, children }) => {
         return () => socket.off('message-sent');
     }, [socket, setConversations]);
 
+    // Send message
     const sendMessage = (recipients, text) => {
 
         const messageId = uuidV4()

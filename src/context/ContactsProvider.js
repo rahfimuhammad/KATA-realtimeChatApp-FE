@@ -41,7 +41,7 @@ export const ContactsProvider = ({children}) => {
 
     const getContact = useCallback(async () => {
         try {
-            const response = await axios.get(`https://kata-server-e0c6f72de554.herokuapp.com/contact/${id}`)
+            const response = await axios.get(`https://kata-realtimechatapp-be.onrender.com/contact/${id}`)
             setContacts(response?.data)
         } catch (error) {
             console.log(error.message)
@@ -55,7 +55,7 @@ export const ContactsProvider = ({children}) => {
     const addToContact = async (recipientId) => {
         try {      
             setLoading(true)
-            const response = await axios.post('https://kata-server-e0c6f72de554.herokuapp.com/contact', {
+            const response = await axios.post('https://kata-realtimechatapp-be.onrender.com/contact', {
                 userId: id,
                 recipientId: recipientId
             });

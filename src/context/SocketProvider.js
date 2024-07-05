@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import io from 'socket.io-client'
 import { useApp } from './AppProvider'
 
+
+// Setting up SocketContext
 const SocketContext = React.createContext()
 
 export function useSocket() {
@@ -14,16 +16,19 @@ export const SocketProvider = ({ children }) => {
     const [connectionError, setConnectionError] = useState(false)
     const { id } = useApp()
 
+    // Setting up Socket
     useEffect(() => {
         const newSocket = io(
-            'https://kata-server-e0c6f72de554.herokuapp.com/'
+            'https://kata-realtimechatapp-be.onrender.com'
             , { query: {id} })
 
+        // Socket Connection
         newSocket.on('connect', () => {
             setSocket(newSocket)
             setConnectionError(false)
         })
 
+        // Socket Disconnection
         newSocket.on('connect_error', () => {
             setConnectionError(true)
         })
