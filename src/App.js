@@ -1,6 +1,6 @@
 import Auth from './components/Auth'
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import { useEffect, useState } from 'react';
+// import axios from 'axios';
 import { SocketProvider } from './context/SocketProvider';
 import { ContactsProvider } from './context/ContactsProvider';
 import { ConversationsProvider } from './context/ConversationsProvider';
@@ -11,7 +11,7 @@ import Loading from './components/Loading';
 function App() {
 
   const { id } = useApp()
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
 
   if(!id) {
     return (
@@ -19,17 +19,17 @@ function App() {
     )
   }
 
-  const connectServer = async () => {
-    try {
-      setLoading(true)
-      await axios.get('https://kata-realtimechatapp-be.onrender.com')  
+  // const connectServer = async () => {
+  //   try {
+  //     setLoading(true)
+  //     await axios.get('https://kata-realtimechatapp-be.onrender.com')  
       
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-    }
-  }
+  //   } catch (error) {
+  //     console.log(error)
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   // useEffect(() => {
@@ -44,7 +44,7 @@ function App() {
       <SocketProvider>
         <ContactsProvider>
           <ConversationsProvider id={id}>
-            {loading && <Loading/>}
+            {/* {loading && <Loading/>} */}
             <Dashboard/>
           </ConversationsProvider>
         </ContactsProvider>
