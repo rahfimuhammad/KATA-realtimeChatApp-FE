@@ -204,7 +204,7 @@ const Chat = () => {
                             />
                         </span>
                         }
-                        <button className='send-button' disabled={!text} onClick={(e) => handleSubmit(e)}>
+                        <button className='send-button' disabled={!text || connectionError} onClick={(e) => handleSubmit(e)}>
                             <PaperPlaneRight color='white' size={22} />
                         </button>
                     </form>

@@ -32,12 +32,12 @@ function App() {
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    if(id) {
-      connectServer()
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   if(id) {
+  //     connectServer()
+  //   }
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [id])
 
   return (
     <>
